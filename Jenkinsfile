@@ -4,8 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-               
-                git 'https://github.com/shivomm4887-coder/demo.git'
+                git branch: 'main', url: 'https://github.com/shivomm4887-coder/demo.git'
             }
         }
 
