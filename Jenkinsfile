@@ -2,21 +2,23 @@ pipeline {
     agent any
 
     stages {
-        stage('CheckOut') {
+        stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/shivomm4887-coder/demo.git'
+                echo 'Checking out repo'
+                git 'https://github.com/shivomm4887-coder/demo.git'
             }
         }
-        stage('Build') {
+
+        stage('Publish') {
             steps {
-                echo 'Build in progress.....'
-                bat 'javac Hello.java'
-            }
-        }
-        stage('Execute') {
-            steps {
-                echo 'Executing....'
-                bat 'java Hello'
+                publishHTML([
+                    allowMissing:true,
+                    alwaysLinkToLastBuild:false,
+                    keepAll:false,
+                    reportDir:'.',
+                    reportFiles:'index.html',
+                    reportName:'My HTML Pipe Page'
+                ])
             }
         }
     }
