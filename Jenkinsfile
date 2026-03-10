@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                echo 'Checking out repo'
+               
                 git 'https://github.com/shivomm4887-coder/demo.git'
             }
         }
